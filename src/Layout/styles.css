@@ -1,0 +1,29 @@
+.sidebar_names_container {
+  display: flex;
+  margin-bottom: 12px;
+}
+.sidebar_logout_container {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+}
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: #9c75ef !important;
+}
+.logout_container {
+  position: absolute;
+  bottom: 14px;
+  color: gray;
+  padding: 0px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.logout_container:hover {
+  color: rgba(255, 255, 255, 0.842);
+}
+.logout_text {
+  font-size: 16px;
+  margin-left: 9px;
+}
