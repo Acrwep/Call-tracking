@@ -8,6 +8,10 @@ import { Button, Layout, Menu, theme } from "antd";
 import SidemenuConfig from "./SidemenuConfig";
 import { RiMenu3Fill } from "react-icons/ri";
 import CallLogs from "../Call-logs/Call-logs";
+import Dashboard from "../Dashboard/Dashboard";
+import Messages from "../Messages/Messages";
+import Contacts from "../Contacts/Contacts";
+import BrowserHistory from "../BrowsingHistory/BrowserHistory";
 const { Header, Sider, Content } = Layout;
 // import { FaHome, FaInfo, FaServicestack, FaEnvelope } from "react-icons/fa"; // Example icons
 
@@ -23,10 +27,14 @@ const Sidebar = () => {
 
   useEffect(() => {
     const AccessToken = localStorage.getItem("Accesstoken");
-
     if (AccessToken) {
-      navigate("/call-logs");
-      setShowLayout(true);
+      if (location.pathname === "/") {
+        navigate("/dashboard");
+        setShowLayout(true);
+      } else {
+        navigate(location.pathname);
+        setShowLayout(true);
+      }
     } else {
       navigate("/login");
       setShowLayout(false);
@@ -38,7 +46,7 @@ const Sidebar = () => {
       console.log("comes from login");
       const AccessToken = localStorage.getItem("Accesstoken");
       if (AccessToken) {
-        navigate("/call-logs");
+        navigate(location.pathname);
         setShowLayout(true);
       } else {
         navigate("/login");
@@ -47,13 +55,11 @@ const Sidebar = () => {
     };
     window.addEventListener("localStorageUpdated", handleStorageUpdate);
 
-    // Initial load
-    handleStorageUpdate();
-
     return () => {
       window.removeEventListener("localStorageUpdated", handleStorageUpdate);
     };
-  }, []);
+  }, [navigate, location.pathname, setShowLayout]);
+
   // Toggle sidebar visibility
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -103,12 +109,17 @@ const Sidebar = () => {
               style={{
                 padding: "20px 22px",
                 minHeight: "100vh",
+                backgroundColor: "#f5f6fa",
                 borderRadius: borderRadiusLG,
               }}
             >
               <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/users" element={<Users />} />
                 <Route path="/call-logs" element={<CallLogs />} />
+                <Route path="/messages" element={<Messages />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/browserhistory" element={<BrowserHistory />} />
               </Routes>
             </Content>
           </Layout>

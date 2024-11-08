@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommonTable from "../Common/CommonTable";
 import { RxArrowBottomLeft, RxArrowTopRight } from "react-icons/rx";
 import "./styles.css";
+import CommonSearchField from "../Common/CommonSearchbar";
 
 export default function CallLogs() {
   const columns = [
@@ -32,7 +33,7 @@ export default function CallLogs() {
     },
     { title: "Duration", dataIndex: "duration", key: "5" },
   ];
-  const data = [
+  const [data, setData] = useState([
     {
       id: 1,
       name: "Balaji R",
@@ -49,10 +50,30 @@ export default function CallLogs() {
       type: "Outgoing",
       duration: "19m:4s",
     },
-  ];
+  ]);
+  const [dummyData, setDummyData] = useState([]);
+
+  useEffect(() => {
+    setDummyData(data);
+  }, []);
+
+  const handleSearch = (event) => {
+    const value = event.target.value;
+
+    const filterData = dummyData.filter((f) =>
+      f.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setData(filterData);
+  };
+
   return (
     <div>
       <p className="calllogs_heading">Call Logs</p>
+      <CommonSearchField
+        placeholder="search calllogs"
+        onChange={handleSearch}
+        style={{ width: "25%", marginBottom: "20px" }}
+      />
       <CommonTable
         columns={columns}
         dataSource={data}

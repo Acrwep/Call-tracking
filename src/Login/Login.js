@@ -45,7 +45,7 @@ export default function Login() {
       window.dispatchEvent(event);
 
       setTimeout(() => {
-        navigate("/call-logs");
+        navigate("/dashboard");
       }, 500);
     } catch (error) {
       CommonToaster(error?.response?.data?.message, "error");

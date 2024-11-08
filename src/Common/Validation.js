@@ -128,7 +128,7 @@ const formatDate = (date) => {
   return `${year}-${month}-${day}`;
 };
 
-export const getCurrentandPreviousweekDate = () => {
+export const getPreviousandCurrentweekDate = () => {
   const currentDate = new Date();
 
   // Calculate previous week date (subtract 7 days)

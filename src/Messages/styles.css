@@ -1,0 +1,81 @@
+.messages_userslistContainer {
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  /* border-radius: 6px; */
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 0px 0px;
+  height: 42.5vh;
+  overflow-y: auto;
+}
+.messages_usersdiv:hover {
+  background-color: #9c75ef23;
+  cursor: pointer;
+}
+.messages_usersactivediv {
+  background-color: #9c75ef23;
+}
+.messages_username {
+  padding: 16px 12px;
+  font-weight: 500;
+}
+.messages_usersdivider {
+  margin: 0 !important;
+}
+.messages_chat-col-container {
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  border-left: none;
+  height: 42.5vh;
+  overflow-y: auto;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.message {
+  max-width: 60%;
+  margin: 0px 0;
+  padding: 9px;
+  border-radius: 10px;
+  font-size: 16px;
+  position: relative;
+}
+
+.sent {
+  align-self: flex-end;
+  background-color: #9c75efde;
+  color: white;
+}
+
+.received {
+  align-self: flex-start;
+  background-color: #f1f1f1;
+  color: #333;
+}
+.message-info {
+  font-size: 12px;
+  color: #888;
+  text-align: right; /* Align to the right for sent messages */
+  margin-top: 5px;
+}
+
+/* Specific alignment for sent and received message timestamps */
+.sent-info {
+  text-align: right; /* Align to the right for sent messages */
+}
+
+.received-info {
+  text-align: left;
+  margin-left: 4px;
+}
+
+.message-date {
+  margin-right: 5px;
+}
+
+.message-time {
+  color: #666;
+}

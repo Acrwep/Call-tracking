@@ -1,10 +1,10 @@
 import React from "react";
 import { Input, Space } from "antd";
 import "./commonstyles.css";
-const { Search } = Input;
+import CommonInputField from "./CommonInputField";
+import { IoSearch } from "react-icons/io5";
 
 export default function CommonSearchField({
-  onSearch,
   placeholder,
   value,
   style,
@@ -12,8 +12,8 @@ export default function CommonSearchField({
   onChange,
 }) {
   return (
-    <div style={style}>
-      <Space direction="vertical">
+    <div className="common_searchfieldContainer" style={style}>
+      {/* <Space direction="vertical">
         <Search
           className={`commonsearchbar ${className}`}
           placeholder={placeholder}
@@ -25,7 +25,18 @@ export default function CommonSearchField({
           }}
           value={value}
         />
-      </Space>
+      </Space> */}
+      {/* <input className="form-control common_searchfield" /> */}
+      <Input
+        className="common_searchfield"
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+        allowClear
+      />
+      <div className="common_searchiconContainer">
+        <IoSearch size={17} />
+      </div>
     </div>
   );
 }
